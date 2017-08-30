@@ -1,13 +1,13 @@
 import logging.config
+import settings
 
+from api import api_blueprint
 from core.data_model import db
 from core.data_model import reset_database
-from flask import Flask, Blueprint
+from flask import Flask
 
-import settings
-from api.endpoints.categories import ns as blog_categories_namespace
-from api.endpoints.posts import ns as blog_posts_namespace
-from api.restplus import api
+
+
 
 app = Flask(__name__)
 logging.config.fileConfig('logging.conf')
@@ -27,11 +27,7 @@ def configure_app(flask_app):
 def initialize_app(flask_app):
     configure_app(flask_app)
 
-    blueprint = Blueprint('api', __name__, url_prefix='/api')
-    api.init_app(blueprint)
-    api.add_namespace(blog_posts_namespace)
-    api.add_namespace(blog_categories_namespace)
-    flask_app.register_blueprint(blueprint)
+    api_blueprint.register(flask_app)
 
     db.init_app(flask_app)
 

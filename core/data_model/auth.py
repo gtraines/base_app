@@ -1,8 +1,9 @@
-from security.auth_db import Base
+from .auth_db import Base
 from flask_security import UserMixin, RoleMixin
 from sqlalchemy import create_engine
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import Boolean, DateTime, Column, Integer, String, ForeignKey
+
 
 class RolesUsers(Base):
     __tablename__ = 'role_user'
@@ -13,6 +14,7 @@ class RolesUsers(Base):
     def id(self):
         return self.role_user_id
 
+
 class Role(Base, RoleMixin):
     __tablename__ = 'role'
     role_id = Column(Integer(), primary_key=True)
@@ -21,6 +23,7 @@ class Role(Base, RoleMixin):
 
     def id(self):
         return self.role_id
+
 
 class User(Base, UserMixin):
     __tablename__ = 'user'

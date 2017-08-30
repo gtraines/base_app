@@ -1,3 +1,4 @@
+
 # Flask settings
 FLASK_SERVER_NAME = 'localhost:8888'
 FLASK_DEBUG = True  # Do not use debug mode in production
@@ -11,3 +12,7 @@ RESTPLUS_ERROR_404_HELP = False
 # SQLAlchemy settings
 SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:Mallory@localhost:3306/new_schema1'
 SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+# Security Settings
+SECRET_KEY = 'super-secret'
+SECURITY_PASSWORD_SALT = 'super-secret'
