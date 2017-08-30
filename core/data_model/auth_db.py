@@ -1,7 +1,8 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from base_app import settings
+from sqlalchemy.orm import scoped_session, sessionmaker
+
+from app_config import settings
 
 engine = create_engine(settings.SQLALCHEMY_DATABASE_URI, convert_unicode=True)
 
@@ -17,6 +18,5 @@ Otherwise, you will have to import them first before calling
 init_db()
 '''
 def init_db():
-    from . import auth
     Base.metadata.create_all(bind=engine)
     return

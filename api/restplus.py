@@ -2,8 +2,9 @@ import logging
 import traceback
 
 from flask_restplus import Api
-import settings
 from sqlalchemy.orm.exc import NoResultFound
+
+from app_config import settings
 
 log = logging.getLogger(__name__)
 

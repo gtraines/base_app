@@ -1,13 +1,12 @@
 import logging.config
-import settings
 
-from api import api_blueprint
-from core.data_model import db
-from core.data_model import reset_database
 from flask import Flask
 
-
-
+from api import get_blueprint as get_api_blueprint
+from app import get_blueprint as get_app_blueprint
+from app_config import settings
+from core.data_model import db
+from core.data_model import reset_database
 
 app = Flask(__name__)
 logging.config.fileConfig('logging.conf')
@@ -27,7 +26,8 @@ def configure_app(flask_app):
 def initialize_app(flask_app):
     configure_app(flask_app)
 
-    api_blueprint.register(flask_app)
+    flask_app.register_blueprint(get_api_blueprint(), url_prefix='/api')
+    flask_app.register_blueprint(get_app_blueprint(), url_prefix='/')
 
     db.init_app(flask_app)
 
@@ -41,7 +41,7 @@ def main():
         # is while within this block. Therefore, you can now run........
         reset_database(db)
 
-    log.info('>>>>> Starting development server at http://{}/api/ <<<<<'.format(app.config['SERVER_NAME']))
+    log.info('>>>>> Starting development server at http://{}/ <<<<<'.format(app.config['SERVER_NAME']))
     app.run(debug=settings.FLASK_DEBUG)
 
 

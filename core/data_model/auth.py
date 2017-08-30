@@ -1,9 +1,10 @@
-from .auth_db import Base
 from flask_security import UserMixin, RoleMixin
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import Boolean, DateTime, Column, Integer, String, ForeignKey
 
+Base = declarative_base()
 
 class RolesUsers(Base):
     __tablename__ = 'role_user'
