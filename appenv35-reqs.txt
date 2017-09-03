@@ -1,0 +1,28 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-64
+@EXPLICIT
+https://conda.anaconda.org/conda-forge/linux-64/aniso8601-1.2.0-py35_0.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/click-6.7-py35_0.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/flask-0.12.2-py35_0.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/flask-restplus-0.10.1-py35_0.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/flask-sqlalchemy-2.2-py35_1.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/itsdangerous-0.24-py35_1.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/jinja2-2.9.6-py35_0.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/jsonschema-2.6.0-py35_0.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/markupsafe-1.0-py35_0.tar.bz2
+https://repo.continuum.io/pkgs/free/linux-64/openssl-1.0.2l-0.tar.bz2
+https://repo.continuum.io/pkgs/free/linux-64/pip-9.0.1-py35_1.tar.bz2
+https://repo.continuum.io/pkgs/free/linux-64/python-3.5.4-0.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/python-dateutil-2.6.1-py35_0.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/pytz-2017.2-py35_0.tar.bz2
+https://repo.continuum.io/pkgs/free/linux-64/readline-6.2-2.tar.bz2
+https://repo.continuum.io/pkgs/free/linux-64/setuptools-27.2.0-py35_0.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/six-1.10.0-py35_1.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/sqlalchemy-1.1.13-py35_0.tar.bz2
+https://repo.continuum.io/pkgs/free/linux-64/sqlite-3.13.0-0.tar.bz2
+https://repo.continuum.io/pkgs/free/linux-64/tk-8.5.18-0.tar.bz2
+https://conda.anaconda.org/conda-forge/linux-64/werkzeug-0.12.2-py35_0.tar.bz2
+https://repo.continuum.io/pkgs/free/linux-64/wheel-0.29.0-py35_0.tar.bz2
+https://repo.continuum.io/pkgs/free/linux-64/xz-5.2.3-0.tar.bz2
+https://repo.continuum.io/pkgs/free/linux-64/zlib-1.2.11-0.tar.bz2
