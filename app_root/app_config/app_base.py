@@ -1,6 +1,6 @@
 from flask import Flask
-from flask_security import Security, login_required, SQLAlchemySessionUserDatastore
-from core.data_model import auth, auth_db
+from flask_security import Security, SQLAlchemySessionUserDatastore
+
 
 class AppBase(object):
 

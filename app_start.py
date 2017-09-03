@@ -1,15 +1,16 @@
 import logging.config
 
+from app_root.api import get_blueprint as get_api_blueprint
 from flask import Flask
 
-from api import get_blueprint as get_api_blueprint
-from app import get_blueprint as get_app_blueprint
-from app_config import settings
-from core.data_model import db
-from core.data_model import reset_database
+# from base_app.app import get_blueprint as get_app_blueprint
+from app_root.app_config import settings
+from app_root.core.data_model import db
 
 app = Flask(__name__)
-logging.config.fileConfig('logging.conf')
+from os import path
+log_file_path = path.join(path.dirname(path.abspath(__file__)), './app_root/app_config/logging.conf')
+logging.config.fileConfig(log_file_path)
 log = logging.getLogger(__name__)
 
 
@@ -27,7 +28,7 @@ def initialize_app(flask_app):
     configure_app(flask_app)
 
     flask_app.register_blueprint(get_api_blueprint(), url_prefix='/api')
-    flask_app.register_blueprint(get_app_blueprint(), url_prefix='/')
+    #flask_app.register_blueprint(get_app_blueprint(), url_prefix='/')
 
     db.init_app(flask_app)
 
@@ -36,11 +37,6 @@ def initialize_app(flask_app):
 
 def main():
     initialize_app(app)
-    with app.app_context():
-        # Extensions like Flask-SQLAlchemy now know what the "current" app
-        # is while within this block. Therefore, you can now run........
-        reset_database(db)
-
     log.info('>>>>> Starting development server at http://{}/ <<<<<'.format(app.config['SERVER_NAME']))
     app.run(debug=settings.FLASK_DEBUG)
 

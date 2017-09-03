@@ -1,13 +1,13 @@
 import logging
 
-from core.data_model.models import Post
+from ..parsers import pagination_arguments
+from ..restplus import api
+from app_root.core.business import create_blog_post, update_post, delete_post
 from flask import request
 from flask_restplus import Resource
 
-from api.parsers import pagination_arguments
-from api.restplus import api
-from api.serializers import blog_post, page_of_blog_posts
-from core.business import create_blog_post, update_post, delete_post
+from ..serializers import blog_post, page_of_blog_posts
+from app_root.core.data_model.models import Post
 
 log = logging.getLogger(__name__)
 

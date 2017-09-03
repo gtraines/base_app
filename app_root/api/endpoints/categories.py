@@ -1,12 +1,12 @@
 import logging
 
-from core.data_model.models import Category
+from app_root.api.restplus import api
+from app_root.core.business import create_category, delete_category, update_category
 from flask import request
 from flask_restplus import Resource
 
-from api.restplus import api
-from api.serializers import category, category_with_posts
-from core.business import create_category, delete_category, update_category
+from app_root.api.serializers import category, category_with_posts
+from app_root.core.data_model.models import Category
 
 log = logging.getLogger(__name__)
 

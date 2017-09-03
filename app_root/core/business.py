@@ -1,5 +1,5 @@
-from core.data_model  import db
-from core.data_model.models import Post, Category
+from app_root.core.data_model.models import Post, Category
+from app_root.core.data_model import db
 
 
 def create_blog_post(data):

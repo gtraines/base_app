@@ -10,7 +10,7 @@ RESTPLUS_MASK_SWAGGER = False
 RESTPLUS_ERROR_404_HELP = False
 
 # SQLAlchemy settings
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:Mallory@localhost:3306/new_schema1'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://username:password@localhost:3306/dbschema'
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 # Security Settings
