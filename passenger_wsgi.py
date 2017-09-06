@@ -11,7 +11,9 @@ if sys.executable != INTERP:
     os.execl(INTERP, INTERP, *sys.argv)
 
 sys.path.insert(0, '{v}/lib/python3.5/site-packages'.format(v=VENV))
-from app_start import app
-from app_start import initialize_app
-application = initialize_app(app)
-application.config['SERVER_NAME'] = ''
+from app_root.app_config.app_base import AppBase
+from app_root.app_config.settings import ProductionAppSettings
+app_base = AppBase(ProductionAppSettings)
+application = app_base.app_instance
+
+

@@ -1,6 +1,9 @@
-from flask import Flask
+from flask import make_response
+from flask import Blueprint
+
+blueprint = Blueprint('app', __name__)
 
 
-@app.route('/')
+@blueprint.route('/')
 def index():
-    return '<h1>Return value</h1>'
+    return make_response('<h1>Return value</h1>')

@@ -17,7 +17,7 @@ def default_error_handler(e):
     message = 'An unhandled exception occurred.'
     log.exception(message)
 
-    if not settings.FLASK_DEBUG:
+    if not settings.DEBUG:
         return {'message': message}, 500
 
 

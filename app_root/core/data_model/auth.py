@@ -2,11 +2,12 @@ from flask_security import UserMixin, RoleMixin
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import relationship, backref
-from sqlalchemy import Boolean, DateTime, Column, Integer, String, ForeignKey
+from sqlalchemy import Boolean, DateTime, Column, Integer, String, ForeignKey, UniqueConstraint
 
-Base = declarative_base()
+from . import db
 
-class RolesUsers(Base):
+
+class RolesUsers(db.Model):
     __tablename__ = 'role_user'
     role_user_id = Column(Integer(), primary_key=True)
     user_id = Column('user_id', Integer(), ForeignKey('user.user_id'))
@@ -16,7 +17,7 @@ class RolesUsers(Base):
         return self.role_user_id
 
 
-class Role(Base, RoleMixin):
+class Role(db.Model, RoleMixin):
     __tablename__ = 'role'
     role_id = Column(Integer(), primary_key=True)
     name = Column(String(80), unique=True)
@@ -26,7 +27,7 @@ class Role(Base, RoleMixin):
         return self.role_id
 
 
-class User(Base, UserMixin):
+class User(db.Model, UserMixin):
     __tablename__ = 'user'
     user_id = Column(Integer, primary_key=True)
     email = Column(String(255), unique=True)
