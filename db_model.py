@@ -1,13 +1,3 @@
-from flask_security import UserMixin, RoleMixin
-from app_root.core.auth.encryption import EncryptionService
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
-from sqlalchemy.ext.hybrid import hybrid_property
-from sqlalchemy.orm import relationship, backref
-from sqlalchemy import Boolean, DateTime, Column, Integer, String, ForeignKey, UniqueConstraint
-
-from . import db
-
 # coding: utf-8
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, text
 from sqlalchemy.orm import relationship
@@ -205,7 +195,7 @@ class OrganizationUserRole(Base):
     user1 = relationship('User', primaryjoin='OrganizationUserRole.user_id == User.user_id')
 
 
-class Role(Base, RoleMixin):
+class Role(Base):
     __tablename__ = 'role'
 
     role_id = Column(Integer, primary_key=True, unique=True)
@@ -228,9 +218,6 @@ class Role(Base, RoleMixin):
     user = relationship('User')
     parent_role = relationship('Role', remote_side=[role_id])
     role_type = relationship('RoleType')
-
-    def id(self):
-        return self.role_id
 
 
 class RoleType(Base):
@@ -256,22 +243,14 @@ class RoleType(Base):
     user = relationship('User')
 
 
-class User(Base, UserMixin):
+class User(Base):
     __tablename__ = 'user'
-    _password = db.Column(db.String(255))
-
-    @hybrid_property
-    def password(self):
-        return self._password
-
-    @password.setter
-    def _set_password(self, plaintext):
-        self._password = EncryptionService().generate_password_hash(plaintext)
 
     user_id = Column(Integer, primary_key=True, unique=True)
     user_uuid = Column(String(36), nullable=False, unique=True)
     user_type_id = Column(ForeignKey('user_type.user_type_id'), nullable=False, index=True)
     email = Column(String(255), nullable=False)
+    password = Column(String(255))
     confirmed_at = Column(DateTime)
     current_login_at = Column(DateTime)
     current_login_ip = Column(String(45))
@@ -290,9 +269,6 @@ class User(Base, UserMixin):
     valid_to_date = Column(DateTime)
 
     user_type = relationship('UserType')
-
-    def id(self):
-        return self.user_id
 
 
 class UserType(Base):

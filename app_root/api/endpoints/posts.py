@@ -2,9 +2,10 @@ import logging
 
 from ..parsers import pagination_arguments
 from ..restplus import api
-from app_root.core.business import create_blog_post, update_post, delete_post
+from app_root.core.business.post import create_blog_post, update_post, delete_post
 from flask import request
 from flask_restplus import Resource
+from flask_jsonschema import JsonSchema
 
 from ..serializers import blog_post, page_of_blog_posts
 from app_root.core.data_model.models import Post

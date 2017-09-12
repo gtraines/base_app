@@ -1,9 +1,11 @@
 import logging
 
 from app_root.api.restplus import api
-from app_root.core.business import create_category, delete_category, update_category
+from app_root.core.business.category import create_category, delete_category, update_category
 from flask import request
+from flask import current_app
 from flask_restplus import Resource
+from flask_jsonschema import JsonSchema
 
 from app_root.api.serializers import category, category_with_posts
 from app_root.core.data_model.models import Category
@@ -11,7 +13,6 @@ from app_root.core.data_model.models import Category
 log = logging.getLogger(__name__)
 
 ns = api.namespace('categories', description='Operations related to core categories')
-
 
 @ns.route('/')
 class CategoryCollection(Resource):

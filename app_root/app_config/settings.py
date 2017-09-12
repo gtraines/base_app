@@ -4,6 +4,7 @@ import os
 class AppSettings(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'super-secret'
     SECURITY_PASSWORD_SALT = os.environ.get('SECURITY_PASSWORD_SALT') or 'super-secret'
+    BCRYPT_LOG_ROUNDS = 24
     CORE_DB_USER = os.environ.get('CORE_DB_USER') or 'root'
     CORE_DB_PASSWORD = os.environ.get('CORE_DB_PASSWORD') or 'password'
     CORE_DB_URI = os.environ.get('CORE_DB_URI') or 'localhost:3306'
