@@ -15,3 +15,7 @@ class EncryptionService(metaclass=MetaSingleton):
             return generate_password_hash(plaintext, 24)
 
         return self._bcrypt_instance.generate_password_hash(plaintext)
+
+    def is_correct_password(self, plaintext, password_hash):
+        return self._bcrypt_instance.check_password_hash(password_hash, plaintext)
+

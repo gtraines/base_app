@@ -1,0 +1,4 @@
+#! /bin/bash
+
+source activate appenv35
+python app_start.py

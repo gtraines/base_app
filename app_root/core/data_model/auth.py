@@ -1,17 +1,11 @@
 from flask_security import UserMixin, RoleMixin
 from app_root.core.auth.encryption import EncryptionService
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship, backref
-from sqlalchemy import Boolean, DateTime, Column, Integer, String, ForeignKey, UniqueConstraint
-
-from . import db
-
-# coding: utf-8
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, text
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
+from . import db
 
 
 Base = declarative_base()
