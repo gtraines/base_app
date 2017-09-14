@@ -27,14 +27,13 @@ class AppBase(object):
         return self.app_instance(environ, start_response)
 
     def init_app(self, config):
-        app = Flask(__name__, template_folder='../templates')
+        app = Flask(__name__, template_folder='../templates', static_folder='../../public')
         app.config.from_object(config)
         config.init_app(app)
         self.init_database(app)
         self.register_blueprints(app)
         self.register_plugins(app)
         app.config['JSONSCHEMA_DIR'] = jsonschema_dir
-
 
         return app
 
