@@ -1,5 +1,4 @@
 #! /bin/bash
 
-source activate appenv35
 ./killport 8888
 python app_start.py

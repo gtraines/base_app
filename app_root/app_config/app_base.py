@@ -43,12 +43,14 @@ class AppBase(object):
         self.register_plugins(app)
 
         return app
+        
+    def init_database(self, app_instance):
+        db.init_app(app_instance)
 
 
     def register_blueprints(self, app_instance):
         app_instance.register_blueprint(bp_home, url_prefix='/')
         app_instance.register_blueprint(get_api_blueprint(), url_prefix='/api')
-
 
     def register_security(self, app_instance):
         user_datastore = SQLAlchemySessionUserDatastore(db, User, Role)

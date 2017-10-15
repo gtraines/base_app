@@ -8,6 +8,14 @@ class AppSettings(object):
     SECURITY_CONFIRMABLE = True
     SECURITY_RECOVERABLE = True
     BCRYPT_LOG_ROUNDS = 24
+    
+    MAIL_SERVER = os.environ.get('MAIL_SERVER') or 'smtp.gmail.com'
+    MAIL_PORT = os.environ.get('MAIL_PORT') or 465
+    MAIL_USE_TLS = False
+    MAIL_USE_SSL = True
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME') or 'your-gmail-username'
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') or'your-gmail-password'
+    DEFAULT_MAIL_SENDER = 'info@site.com'
 
     CORE_DB_USER = os.environ.get('CORE_DB_USER') or 'root'
     CORE_DB_PASSWORD = os.environ.get('CORE_DB_PASSWORD') or 'password'
