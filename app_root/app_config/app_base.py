@@ -66,7 +66,7 @@ class AppBase(object):
 
 
     def register_datasources(self, app_instance):
-        app.config['JSONSCHEMA_DIR'] = jsonschema_dir
+        app_instance.config['JSONSCHEMA_DIR'] = jsonschema_dir
         db.init_app(app_instance)
 
 
