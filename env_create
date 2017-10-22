@@ -1,0 +1,5 @@
+#! /bin/bash
+
+conda env create -f=environment.yml -n appenv35
+source activate appenv35
+pip install -r requirements_pip.txt

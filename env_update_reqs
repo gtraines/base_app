@@ -1,0 +1,5 @@
+#! /bin/bash
+
+source activate appenv35
+conda env export --file environment.yml
+pip freeze > requirements_pip.txt

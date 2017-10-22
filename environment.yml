@@ -4,6 +4,8 @@ channels:
 - defaults
 dependencies:
 - aniso8601=1.2.0=py35_0
+- ca-certificates=2017.7.27.1=0
+- certifi=2017.7.27.1=py35_0
 - click=6.7=py35_0
 - flask=0.12.2=py35_0
 - flask-restplus=0.10.1=py35_0
@@ -12,21 +14,22 @@ dependencies:
 - jinja2=2.9.6=py35_0
 - jsonschema=2.6.0=py35_0
 - markupsafe=1.0=py35_0
+- ncurses=5.9=10
+- openssl=1.0.2l=0
+- python=3.5.4=0
 - python-dateutil=2.6.1=py35_0
 - pytz=2017.2=py35_0
+- setuptools=27.2.0=py35_0
 - six=1.10.0=py35_1
 - sqlalchemy=1.1.13=py35_0
-- werkzeug=0.12.2=py35_0
-- openssl=1.0.2l=0
-- pip=9.0.1=py35_1
-- python=3.5.4=0
-- readline=6.2=2
-- setuptools=27.2.0=py35_0
 - sqlite=3.13.0=0
-- tk=8.5.18=0
+- werkzeug=0.12.2=py35_0
 - wheel=0.29.0=py35_0
 - xz=5.2.3=0
 - zlib=1.2.11=0
+- pip=9.0.1=py35_1
+- readline=6.2=2
+- tk=8.5.18=0
 - pip:
   - alembic==0.9.5
   - amqp==2.2.2
@@ -43,6 +46,7 @@ dependencies:
   - flask-bcrypt==0.7.1
   - flask-bootstrap==3.3.7.1
   - flask-jsonschema==0.1.1
+  - flask-jwt==0.3.2
   - flask-login==0.4.0
   - flask-mail==0.9.1
   - flask-migrate==2.1.1
@@ -56,6 +60,7 @@ dependencies:
   - passlib==1.7.1
   - pika==0.11.0
   - pycparser==2.18
+  - pyjwt==1.4.2
   - pymysql==0.7.11
   - python-editor==1.0.3
   - speaklater==1.3
