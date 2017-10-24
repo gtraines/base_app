@@ -20,7 +20,6 @@ logging.config.fileConfig(log_file_path)
 log = logging.getLogger(__name__)
 basedir = path.abspath(path.dirname(__file__))
 bootstrap = Bootstrap()
-jwt = JWT()
 
 
 class AppBase(object):
@@ -28,25 +27,24 @@ class AppBase(object):
     def __init__(self, config):
         self.app_instance = self.init_app(config)
 
-
     def __call__(self, environ, start_response):
         return self.app_instance(environ, start_response)
 
-
     def init_app(self, config):
-        app = Flask(__name__, template_folder='../templates', static_folder='../../public')
+        log.info(config.STATIC_FOLDER)
+        app = Flask(__name__, template_folder='../templates', static_folder=config.STATIC_FOLDER)
         app.config.from_object(config)
         config.init_app(app)
 
         self.register_datasources(app)
         self.register_blueprints(app)
         self.register_plugins(app)
+        self.register_security(app)
 
         return app
         
     def init_database(self, app_instance):
         db.init_app(app_instance)
-
 
     def register_blueprints(self, app_instance):
         app_instance.register_blueprint(bp_home, url_prefix='/')
@@ -54,21 +52,19 @@ class AppBase(object):
 
     def register_security(self, app_instance):
         user_datastore = SQLAlchemySessionUserDatastore(db, User, Role)
-        
-        security = Security(app_instance, user_datastore)
-        security.init_app(app_instance, user_datastore)
-        
+
+        jwt = JWT()
         jwt_handlers.set_jwt_handlers(jwt)
         jwt.init_app(app_instance)
+
+        security = Security(app_instance, user_datastore, register_blueprint=True)
 
         LoginService().init_app(app_instance)
         EncryptionService().init_app(app_instance)
 
-
     def register_datasources(self, app_instance):
         app_instance.config['JSONSCHEMA_DIR'] = jsonschema_dir
         db.init_app(app_instance)
-
 
     def register_plugins(self, app_instance):
         bootstrap.init_app(app_instance)

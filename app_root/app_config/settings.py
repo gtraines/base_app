@@ -2,6 +2,9 @@ import os
 
 
 class AppSettings(object):
+    STATIC_FOLDER = '../public'
+
+    SECURITY_BLUEPRINT_NAME = 'auth'
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'super-secret'
     SECURITY_PASSWORD_SALT = os.environ.get('SECURITY_PASSWORD_SALT') or 'super-secret'
     SECURITY_REGISTERABLE = True
@@ -38,6 +41,7 @@ class AppSettings(object):
 
 
 class DevelopmentAppSettings(AppSettings):
+    STATIC_FOLDER = '../../public'
     SERVER_NAME = 'localhost:8888'
     CORE_DB_USER = 'root'
     CORE_DB_PASSWORD = 'Mallory'

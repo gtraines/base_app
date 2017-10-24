@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Basket Devil Login</title>
     <!-- Update the link path to where your stylesheet file is located. For example: /path/to/your/assets/css/lib/uswds.min.css -->
-    <link rel="stylesheet" href="/css/main.css">
-      <link rel="stylesheet" href="/css/uswds.css" media="all" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/uswds.css') }}" media="all" />
   </head>
   <body class="layout-demo">
   <a class="usa-skipnav" href="#main-content">Skip to main content</a>
@@ -38,7 +38,7 @@
   <footer class="usa-footer usa-footer-medium" role="contentinfo">
   </footer>
   <!-- Update the link path to where your JavaScript file is located. For example: /path/to/your/assets/js/lib/uswds.min.js -->
-  <script src="/js/lib/uswds.min.js"></script>
+  <script src="{{ url_for('static', filename='js/lib/uswds.min.js') }}"></script>
   </body>
 </html>
 

@@ -20,18 +20,18 @@ def set_jwt_handlers(jwt):
             return user
         return None
 
-    @jwt.error_handler
-    def error_handler(error):
-        return 'Auth Failed: {}'.format(error.description), 400
+    # @jwt.error_handler
+    # def error_handler(error):
+    #     return 'Auth Failed: {}'.format(error.description), 400
 
-    @jwt.payload_handler
-    def make_payload(user):
-        return {
-            'user_id': str(user.id),
-            'exp': (datetime.datetime.utcnow() +
-                    current_app.config['JWT_EXPIRATION_DELTA']).isoformat()
-        }
+    # @jwt.payload_handler
+    # def make_payload(user):
+    #     return {
+    #         'user_id': str(user.id),
+    #         'exp': (datetime.datetime.utcnow() +
+    #                 current_app.config['JWT_EXPIRATION_DELTA']).isoformat()
+    #     }
 
-    @jwt.user_handler
-    def load_user(payload):
-        return auth.User.objects(id=payload['user_id']).first()
+    # @jwt.user_handler
+    # def load_user(payload):
+    #     return auth.User.objects(id=payload['user_id']).first()
